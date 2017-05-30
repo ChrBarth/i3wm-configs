@@ -11,6 +11,9 @@
 
 set $mod Mod4
 
+# path to the background image
+set $bg ~/Bilder/blender/doodles/render/Spiral_02_HQ.png
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:monospace 8
@@ -232,7 +235,7 @@ exec --no-startup-id pulseaudio -D
 # exec_always: command gets executed everytime the config is reloaded,
 # exec only executes once per session (you have to log out for
 # changes to be effective)
-exec_always --no-startup-id feh --bg-scale ~/Bilder/blender/doodles/render/Spiral_05_HQ.png
+exec_always --no-startup-id feh --bg-scale $bg
 
 # auto mount external drives with udiskie:
 # -A: disable automount
