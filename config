@@ -20,13 +20,6 @@ font xft:Terminus, FontAwesome 8
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -34,7 +27,7 @@ floating_modifier $mod
 #bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Return exec urxvt
 
-# diverse Anwendungen:
+# misc applications:
 bindsym Control+Mod1+c exec chromium-browser
 bindsym Control+Mod1+g exec gvim
 bindsym Control+Mod1+v exec vlc
@@ -103,14 +96,23 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # workspace names (using Font Awesome Icons):
+# workspace 1 is for terminals:
 set $WS1 1.
+# workspace 2 is for music players (clementine)
 set $WS2 2.
+# workspace 3 is for web browsing/email
 set $WS3 3.
+# workspace 4 is for graphic/video editing stuff
 set $WS4 4.
+# workspace 5 is for office
 set $WS5 5.
+# workspace 6 is for video players
 set $WS6 6.
+# workspace 7 is for audio mixers, qjackctl, cadence etc.
 set $WS7 7.
+# workspace 8 is for audio recording/mixing/mastering applications
 set $WS8 8.
+# workspace 9 and 10 are for everything else :)
 set $WS9 9.
 set $WS10 10.
 
@@ -140,6 +142,7 @@ for_window [class="^Qjackctl$"] floating enable
 for_window [class="^Mudita24$"] floating enable
 
 # switch to workspace
+# somehow Control+F[1-10] is what I'm use to...
 bindsym $mod+1 workspace $WS1
 bindsym Control+F1 workspace $WS1
 bindsym $mod+2 workspace $WS2
@@ -208,6 +211,7 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
+# at the moment I'm playing around with both i3status and conky:
 bar {
 	status_command $HOME/bin/conky-i3bar
 #       status_command i3status
@@ -215,20 +219,28 @@ bar {
 	position top
 }
 
-# colors:
+# colors - still ugly, but not very high on my todo-list at the moment:
 client.focused #101010 #202020 #FFFFFF #FFFFFF
 client.focused_inactive #101010 #050505 #444444 #FFFFFF
 client.unfocused #080808 #02020220202 #444444 #FFFFFF
 client.urgent #C20000 #C20000 #FFFFFF #FFFFFF
 
-# PulseAudio starten:
+# start PulseAudio:
 exec --no-startup-id pulseaudio -D
 
-# Hintergrundbild festlegen:
+# background image:
+# exec_always: command gets executed everytime the config is reloaded,
+# exec only executes once per session (you have to log out for
+# changes to be effective)
 exec_always --no-startup-id feh --bg-scale ~/Bilder/blender/doodles/render/Spiral_05_HQ.png
 
-# Automounter starten:
+# auto mount external drives with udiskie:
+# -A: disable automount
+# -N: disable notify popups
+# -t: show tray icon (so I can easily mount/unmount manually)
+# -s: smart tray (only shows when there is something to mount/unmount
 exec --no-startup-id udiskie -ANts
 
 # redshift:
+# my eyes don't hurt anymore when I'm browsing the web late at night :D
 exec --no-startup-id redshift
