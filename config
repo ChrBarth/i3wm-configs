@@ -38,6 +38,9 @@ bindsym Control+Mod1+v exec vlc
 bindsym Control+Mod1+m exec clementine
 bindsym Control+Mod1+e exec caja
 
+# screenshot:
+bindsym Print exec scrot "/home/chrissi/Bilder/screenshots/screenshot_%Y-%m-%d-%k%M%S.png"
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
@@ -253,4 +256,4 @@ exec --no-startup-id redshift
 
 # last.fm scrobbler for moc:
 # https://github.com/fluxid/mocp-scrobbler
-mocp-scrobbler.py -d
+exec mocp-scrobbler.py -d
