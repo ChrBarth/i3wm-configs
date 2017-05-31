@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# checks for updates and prints out the number of updates available
+# thanks to glenn jackman
+# https://askubuntu.com/a/457887
+
+IFS=";" read updates security_updates < <(/usr/lib/update-notifier/apt-check 2>&1)
+echo $updates
