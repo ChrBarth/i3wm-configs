@@ -250,3 +250,7 @@ exec --no-startup-id udiskie -ANts
 # redshift:
 # my eyes don't hurt anymore when I'm browsing the web late at night :D
 exec --no-startup-id redshift
+
+# last.fm scrobbler for moc:
+# https://github.com/fluxid/mocp-scrobbler
+mocp-scrobbler.py -d

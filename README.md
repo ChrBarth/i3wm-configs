@@ -1,7 +1,7 @@
 # i3wm-configs
 my configs for the i3 window manager
 
-**instructions (at least for ubuntu 16.04):**
+**instructions (currently running on ubuntu 16.04):**
 
 The following applications are used in addition to i3:
   
