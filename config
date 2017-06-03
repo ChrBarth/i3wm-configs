@@ -39,7 +39,7 @@ bindsym Control+Mod1+m exec clementine
 bindsym Control+Mod1+e exec caja
 
 # screenshot:
-bindsym Print exec scrot "~/Bilder/screenshots/screenshot_%Y-%m-%d-%k%M%S.png"
+bindsym Print exec "scrot ~/Bilder/screenshots/screenshot_%Y-%m-%d-%k%M%S.png"
 
 # kill focused window
 bindsym $mod+Shift+q kill
