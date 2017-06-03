@@ -246,9 +246,8 @@ exec_always --no-startup-id feh --bg-scale $bg
 # auto mount external drives with udiskie:
 # -A: disable automount
 # -N: disable notify popups
-# -t: show tray icon (so I can easily mount/unmount manually)
 # -s: smart tray (only shows when there is something to mount/unmount
-exec --no-startup-id udiskie -ANts
+exec --no-startup-id udiskie -ANs
 
 # redshift:
 # my eyes don't hurt anymore when I'm browsing the web late at night :D
@@ -257,3 +256,4 @@ exec --no-startup-id redshift
 # last.fm scrobbler for moc:
 # https://github.com/fluxid/mocp-scrobbler
 exec mocp-scrobbler.py -d
+
