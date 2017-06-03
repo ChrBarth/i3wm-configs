@@ -1,0 +1,10 @@
+#!/bin/bash
+# creates blurred screenshot of current desktop and uses it as image for i3lock
+
+# make screenshot of current desktop
+import -window root - | \
+convert -gaussian-blur 5x5 - - | \
+composite .config/i3/lock_circle.png -geometry +690+270 - ~/temp/lockscreen.png && \
+i3lock -i ~/temp/lockscreen.png && \
+rm ~/temp/lockscreen.png
+
