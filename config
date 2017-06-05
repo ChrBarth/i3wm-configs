@@ -12,14 +12,15 @@
 set $mod Mod4
 
 # path to the background image
-#set $bg ~/Bilder/blender/doodles/render/Spiral_02_HQ.png
-set $bg ~/Bilder/wallpapers/mrrobot/Mr-Robot-Desktop-Wallpaper.jpg
+# to set a background image I use ranger and convert the selected
+# image to that file:
+set $bg ~/.config/i3/bgimage.png
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+font pango:monospace 10
 
-font xft:Terminus, FontAwesome 8
+font xft:Terminus, FontAwesome 10
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
@@ -37,6 +38,12 @@ bindsym Control+Mod1+g exec gvim
 bindsym Control+Mod1+v exec vlc
 bindsym Control+Mod1+m exec clementine
 bindsym Control+Mod1+e exec caja
+
+# mocp control:
+# Multimediakeys without Contol are already used by clementine
+bindsym Control+XF86AudioPrev exec mocp -r
+bindsym Control+XF86AudioNext exec mocp -f
+bindsym Control+XF86AudioPlay exec mocp -G
 
 # screenshot:
 bindsym Print exec "scrot ~/Bilder/screenshots/screenshot_%Y-%m-%d-%k%M%S.png"
@@ -255,6 +262,10 @@ exec --no-startup-id udiskie -ANs
 # redshift:
 # my eyes don't hurt anymore when I'm browsing the web late at night :D
 exec --no-startup-id redshift
+
+# turn on Num Lock key:
+# (sudo apt install numlockx)
+exec --no-startup-id numlockx
 
 # last.fm scrobbler for moc:
 # https://github.com/fluxid/mocp-scrobbler
