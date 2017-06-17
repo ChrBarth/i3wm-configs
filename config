@@ -161,9 +161,11 @@ assign [class="^Qtractor$"] → $WS8
 for_window [class="^Qjackctl$"] floating enable
 for_window [class="^Mudita24$"] floating enable
 for_window [class="^Gtick$"] floating enable
+for_window [class="qsynth"] floating enable
+for_window [class="^Cadence.py$"] floating enable
 
 # switch to workspace
-# somehow Control+F[1-10] is what I'm use to...
+# somehow Control+F[1-10] is what I'm used to...
 bindsym $mod+1 workspace $WS1
 bindsym Control+F1 workspace $WS1
 bindsym $mod+2 workspace $WS2
