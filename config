@@ -20,6 +20,9 @@ set $bg ~/.config/i3/bgimage.png
 # is used in the bar {} block below.
 font pango:monospace 10
 
+# Don't focus the window under the mouse
+focus_follows_mouse no
+
 font xft:Terminus, FontAwesome 10
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -163,6 +166,7 @@ for_window [class="^Mudita24$"] floating enable
 for_window [class="^Gtick$"] floating enable
 for_window [class="qsynth"] floating enable
 for_window [class="^Cadence.py$"] floating enable
+for_window [class="Audacious"] floating enable
 
 # switch to workspace
 # somehow Control+F[1-10] is what I'm used to...
@@ -273,11 +277,11 @@ exec --no-startup-id numlockx
 
 # last.fm scrobbler for moc:
 # https://github.com/fluxid/mocp-scrobbler
-exec mocp-scrobbler.py -d
+exec --no-startup-id mocp-scrobbler.py -d
 
 # remove caps lock
 exec xmodmap -e "clear lock"
-exec xmodmap -e "remove lock = Caps_Lock"
+#exec xmodmap -e "remove lock = Caps_Lock"
 # undo: xmodmap -e "add Lock = Caps_Lock"
 # bind CapsLock=>Esc (for vim)
 exec xmodmap -e "keysym Caps_Lock = Escape"
