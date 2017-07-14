@@ -167,6 +167,7 @@ for_window [class="^Gtick$"] floating enable
 for_window [class="qsynth"] floating enable
 for_window [class="^Cadence.py$"] floating enable
 for_window [class="Audacious"] floating enable
+for_window [class="^Conky$"] floating enable
 
 # switch to workspace
 # somehow Control+F[1-10] is what I'm used to...
