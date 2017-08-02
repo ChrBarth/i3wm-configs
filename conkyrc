@@ -37,8 +37,6 @@ TEXT
 # JSON for i3bar
 
  [
-   { "full_text" : "☢",
-     "color" : "\#00ff00" },
    { "full_text" : "${moc_artist}-${moc_title}" },
    { "full_text" : "",
        "separator" : false,
@@ -66,7 +64,6 @@ TEXT
        "separator" : false,
        "separator_block_width" : 5},
    { "full_text" : "free" },
-   { "full_text" : "${addr}" , "color" : "\#ffffff"},
    { "full_text" : " ${upspeed}", "color" : "\#ffff00", "min_width" : 45,
      "align" : "left",
      "separator" : false,
