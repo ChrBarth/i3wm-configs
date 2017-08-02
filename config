@@ -5,10 +5,7 @@
 # this file and re-run i3-config-wizard(1).
 #
 
-# i3 config file (v4)
-#
-# Please see http://i3wm.org/docs/userguide.html for a complete reference!
-
+### General settings:{{{
 set $mod Mod4
 
 # path to the background image
@@ -30,7 +27,9 @@ font xft:Terminus, FontAwesome 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+###}}}
 
+### Key bindings:{{{
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Return exec urxvt
@@ -42,6 +41,11 @@ bindsym Control+Mod1+g exec gvim
 bindsym Control+Mod1+v exec vlc
 bindsym Control+Mod1+m exec clementine
 bindsym Control+Mod1+e exec caja
+bindsym Control+Mod1+d exec cadence
+bindsym Control+Mod1+t exec gtick
+bindsym Control+Mod1+p exec --no-startup-id urxvt -fn "xft:Terminus:pixelsize=24" -name pyterm -e python3
+# help (for now:)
+bindsym $mod+F1 exec urxvt -name helpterm -e sh -c "grep bindsym ~/.config/i3/config | less"
 
 # mocp control:
 # Multimediakeys without Contol are already used by clementine
@@ -53,9 +57,13 @@ bindsym Control+XF86AudioPlay exec mocp -G
 bindsym Print exec "scrot ~/Bilder/screenshots/screenshot_%Y-%m-%d-%k%M%S.png"
 
 # kill focused window
+# (I actually like the three-button-version because it keeps me from
+# accidentially closing windows...)
 bindsym $mod+Shift+q kill
 
 # lock screen
+# I wrote a little script that grabs the screen, blurs the image,
+# puts an image of a lock on top and uses this as the lockscreen:
 bindsym Control+Mod1+l exec lock_screen
 
 # start dmenu (a program launcher)
@@ -116,7 +124,9 @@ bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
+###}}}
 
+### Workspaces:{{{
 # workspace names (using Font Awesome Icons):
 # workspace 1 is for terminals:
 set $WS1 1.
@@ -148,6 +158,7 @@ assign [class="^Gimp$"] → $WS4
 assign [class="^Inkscape$"] → $WS4
 assign [class="^Blender$"] → $WS4
 assign [class="^kdenlive$"] → $WS4
+assign [class="^Digikam$"] → $WS4
 assign [class="^libreoffice-*"] → $WS5
 assign [class="^vlc$"] → $WS6
 assign [class="^Kaffeine$"] → $WS6
@@ -159,7 +170,9 @@ assign [class="^Ardour*"] → $WS8
 assign [class="^Audacity$"] → $WS8
 assign [class="^Cadence.py$"] → $WS7
 assign [class="^Qtractor$"] → $WS8
+###}}}
 
+### Special window/application settings:{{{
 # special application settings (floating etc):
 for_window [class="^Qjackctl$"] floating enable
 for_window [class="^Mudita24$"] floating enable
@@ -168,7 +181,15 @@ for_window [class="qsynth"] floating enable
 for_window [class="^Cadence.py$"] floating enable
 for_window [class="Audacious"] floating enable
 for_window [class="^Conky$"] floating enable
+for_window [class="^XCalc$"] floating enable
+for_window [title="^pYahtzee$"] floating enable
+for_window [instance="pyterm"] floating enable
+for_window [instance="pyterm"] move position center
+for_window [instance="helpterm"] floating enable
+for_window [instance="helpterm"] move position center
+###}}}
 
+### workspace stuff:{{{
 # switch to workspace
 # somehow Control+F[1-10] is what I'm used to...
 bindsym $mod+1 workspace $WS1
@@ -203,7 +224,9 @@ bindsym $mod+Shift+7 move container to workspace $WS7
 bindsym $mod+Shift+8 move container to workspace $WS8
 bindsym $mod+Shift+9 move container to workspace $WS9
 bindsym $mod+Shift+0 move container to workspace $WS10
+###}}}
 
+### misc stuff:{{{
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -252,7 +275,9 @@ client.focused #101010 #202020 #FFFFFF #FFFFFF
 client.focused_inactive #101010 #050505 #444444 #FFFFFF
 client.unfocused #080808 #02020220202 #444444 #FFFFFF
 client.urgent #C20000 #C20000 #FFFFFF #FFFFFF
+###}}}
 
+### autostart:{{{
 # start PulseAudio:
 exec --no-startup-id pulseaudio -D
 
