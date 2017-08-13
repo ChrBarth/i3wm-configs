@@ -7,6 +7,7 @@
 
 ### General settings:{{{
 set $mod Mod4
+set $term urxvt
 
 # path to the background image
 # to set a background image I use ranger and convert the selected
@@ -32,7 +33,7 @@ floating_modifier $mod
 ### Key bindings:{{{
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec $term
 
 # misc applications:
 bindsym Control+Mod1+c exec chromium-browser
@@ -43,9 +44,12 @@ bindsym Control+Mod1+m exec clementine
 bindsym Control+Mod1+e exec caja
 bindsym Control+Mod1+d exec cadence
 bindsym Control+Mod1+t exec gtick
+bindsym Control+Mod1+o exec $term -e mocp
 bindsym Control+Mod1+p exec --no-startup-id urxvt -fn "xft:Terminus:pixelsize=24" -name pyterm -e python3
 # help (for now:)
-bindsym $mod+F1 exec urxvt -name helpterm -e sh -c "grep bindsym ~/.config/i3/config | less"
+bindsym $mod+F1 exec urxvt -title helpterm -e sh -c "i3-keybinds.py | less"
+# sometimes I need some kind of menu...:
+bindsym Control+Mod1+a exec xfce4-appfinder 
 
 # mocp control:
 # Multimediakeys without Contol are already used by clementine
@@ -67,11 +71,11 @@ bindsym $mod+Shift+q kill
 bindsym Control+Mod1+l exec lock_screen
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+#bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+h focus left
@@ -119,11 +123,15 @@ bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
+# scratchpad:
+bindsym $mod+Shift+p move scratchpad
+bindsym $mod+p scratchpad show
+
 # focus the parent container
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+c focus child
 ###}}}
 
 ### Workspaces:{{{
@@ -185,8 +193,9 @@ for_window [class="^XCalc$"] floating enable
 for_window [title="^pYahtzee$"] floating enable
 for_window [instance="pyterm"] floating enable
 for_window [instance="pyterm"] move position center
-for_window [instance="helpterm"] floating enable
-for_window [instance="helpterm"] move position center
+for_window [title="helpterm"] floating enable
+for_window [title="helpterm"] move position center
+for_window [class="Xfce4-appfinder"] floating enable
 ###}}}
 
 ### workspace stuff:{{{
@@ -301,8 +310,11 @@ exec --no-startup-id redshift
 # (sudo apt install numlockx)
 exec --no-startup-id numlockx
 
-# last.fm scrobbler for moc:
+# moc and last.fm scrobbler for moc:
 # https://github.com/fluxid/mocp-scrobbler
+# need to run mocp-Server first because of
+# scrobbler complaining about Server not running all the time... :D
+exec --no-startup-id mocp -S
 exec --no-startup-id mocp-scrobbler.py -d
 
 # remove caps lock
