@@ -44,7 +44,7 @@ bindsym Control+Mod1+m exec clementine
 bindsym Control+Mod1+e exec caja
 bindsym Control+Mod1+d exec cadence
 bindsym Control+Mod1+t exec gtick
-bindsym Control+Mod1+o exec $term -e mocp
+bindsym Control+Mod1+o exec $term -e ncmpcpp
 bindsym Control+Mod1+u exec $term -e tmux
 bindsym Control+Mod1+p exec --no-startup-id urxvt -fn "xft:Terminus:pixelsize=24" -name pyterm -e python3
 # help (for now:)
@@ -52,11 +52,15 @@ bindsym $mod+F1 exec urxvt -title helpterm -e sh -c "i3-keybinds.py | less"
 # sometimes I need some kind of menu...:
 bindsym Control+Mod1+a exec xfce4-appfinder 
 
-# mocp control:
-# Multimediakeys without Contol are already used by clementine
-bindsym Control+XF86AudioPrev exec mocp -r
-bindsym Control+XF86AudioNext exec mocp -f
-bindsym Control+XF86AudioPlay exec mocp -G
+# mpd control via mpc:
+# (Multimediakeys without Contol are already used by clementine)
+bindsym Control+XF86AudioPrev exec mpc prev
+bindsym Control+XF86AudioNext exec mpc next
+bindsym Control+XF86AudioPlay exec mpc toggle
+# from https://askubuntu.com/a/444183:
+bindsym Control+XF86AudioMute exec amixer -q -D pulse sset Master toggle
+bindsym Control+XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%-
+bindsym Control+XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+
 
 # screenshot:
 bindsym Print exec "scrot ~/Bilder/screenshots/screenshot_%Y-%m-%d-%k%M%S.png"
@@ -315,8 +319,12 @@ exec --no-startup-id numlockx
 # https://github.com/fluxid/mocp-scrobbler
 # need to run mocp-Server first because of
 # scrobbler complaining about Server not running all the time... :D
-exec --no-startup-id mocp -S
-exec --no-startup-id mocp-scrobbler.py -d
+#exec --no-startup-id mocp -S
+#exec --no-startup-id mocp-scrobbler.py -d
+
+# switched to mpd:
+exec --no-startup-id mpd .mpdconf
+exec --no-startup-id mpdscribble --conf .mpdscribble/mpdscribble.conf
 
 # remove caps lock
 exec xmodmap -e "clear lock"
