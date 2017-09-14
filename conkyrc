@@ -40,8 +40,9 @@ TEXT
    $if_mpd_playing { "full_text" : "${mpd_artist}-${mpd_title}" }, $endif
    { "full_text" : "" ,
      "separator" : false } ,
-   { "full_text" : "${execbar get_volume.sh}" , 
-     "color" : "\#ffff00" } ,
+#   { "full_text" : "${execbar get_volume.sh}" , 
+   { "full_text" : "${exec volume_bar.py}" ,
+     "color" : "\#0000ff" } ,
    { "full_text" : "",
        "separator" : false,
        "separator_block_width" : 5} ,
