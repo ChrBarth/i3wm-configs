@@ -51,6 +51,7 @@ bindsym Control+Mod1+p exec --no-startup-id urxvt -fn "xft:Terminus:pixelsize=24
 bindsym $mod+F1 exec urxvt -title helpterm -e sh -c "i3-keybinds.py | less"
 bindsym $mod+F2 exec urxvt -title helpterm -e sh -c "cat .config/ranger/rc.conf | sed -ne 's/.*map[\t ]*//g p' | less"
 bindsym $mod+F3 exec urxvt -title helpterm -e sh -c "cat .bashrc | sed -ne 's/alias //g p' | less"
+bindsym $mod+F4 exec urxvt -name flurxvt
 # sometimes I need some kind of menu...:
 bindsym Control+Mod1+a exec xfce4-appfinder 
 
@@ -200,6 +201,8 @@ for_window [class="^XCalc$"] floating enable
 for_window [title="^pYahtzee$"] floating enable
 for_window [instance="pyterm"] floating enable
 for_window [instance="pyterm"] move position center
+for_window [instance="flurxvt"] floating enable
+for_window [instance="flurxvt"] move position center
 for_window [title="helpterm"] floating enable
 for_window [title="helpterm"] move position center
 for_window [class="Xfce4-appfinder"] floating enable
