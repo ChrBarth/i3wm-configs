@@ -37,14 +37,16 @@ TEXT
 # JSON for i3bar
 
  [
-   $if_mpd_playing { "full_text" : "${mpd_artist}-${mpd_title}" }, $endif
+   $if_mpd_playing { "full_text" : "${mpd_artist}-${mpd_title}", "color" : "\#a9a9a9" }, $endif
    { "full_text" : "" ,
+     "color" : "\#a9a9a9",
      "separator" : false } ,
 #   { "full_text" : "${execbar get_volume.sh}" , 
    { "full_text" : "${exec volume_bar.py}" ,
      "color" : "\#476e77" } ,
    { "full_text" : "",
        "separator" : false,
+       "color" : "\#a9a9a9",
        "separator_block_width" : 5} ,
    { "full_text" : "${fs_free /}" , "color" :
        ${if_match ${fs_free_perc /}<75}"\#207f3a"${else}
@@ -55,11 +57,13 @@ TEXT
        "separator_block_width" : 5},
    { "full_text" : "free",
      "separator" : false,
+     "color" : "\#a9a9a9",
      "separator_block_width" : 7},
-   { "full_text" : "${diskio}", "min_width" : 40,
-     "align" : "right" },
+   { "full_text" : "${diskio}", "min_width" : 45,
+     "color" : "\#a9a9a9", "align" : "right" },
    { "full_text" : "Mem:",
        "separator" : false,
+       "color" : "\#a9a9a9",
        "separator_block_width" : 5},
        {"full_text" : "${memfree}/${memmax}" , "color" :
        ${if_match ${memperc}<50}"\#207f3a"${else}
@@ -68,26 +72,27 @@ TEXT
        "\#8e2d2d"${endif}${endif}${endif},
        "separator" : false,
        "separator_block_width" : 5},
-   { "full_text" : "free" },
-   { "full_text" : " ${upspeed}", "color" : "\#c6cd75", "min_width" : 45,
+   { "full_text" : "free", "color" : "\#a9a9a9" },
+   { "full_text" : " ${upspeed}", "color" : "\#c6cd75", "min_width" : 55,
      "align" : "left",
      "separator" : false,
      "separator_block_width" : 5},
-   { "full_text" : " ${downspeed}", "color" : "\#207f3a", "min_width" : 45,
+   { "full_text" : " ${downspeed}", "color" : "\#207f3a", "min_width" : 55,
      "align" : "left" },
    { "full_text" : "CPU:",
      "separator" : false,
+     "color"     : "\#a9a9a9",
      "separator_block_width" : 5},
    { "full_text" : "${cpu cpu0}", "color" :
    	${if_match ${cpu cpu0}<25}"\#207f3a"${else}
 	${if_match ${cpu cpu0}<50}"\#c6cd75"${else}
 	${if_match ${cpu cpu0}<75}"\#8e2d2d"${else}
-	"\#ff0000"${endif}${endif}${endif},
+	"\#8e2d2d"${endif}${endif}${endif},
 	"min_width" : 12,
 	"align" : "right",
 	"separator" : false,
      "separator_block_width" : 5},
-   { "full_text" : "%" },
-   { "full_text" : "Updates: ${execpi 1800 update-check}" },
+   { "full_text" : "%", "color" : "\#a9a9a9" },
+   { "full_text" : "Updates: ${execpi 1800 update-check}", "color" : "\#a9a9a9" },
    { "full_text" : "${time %d.%m.%Y %H:%M}", "color" : "\#5493c2"
        }],
