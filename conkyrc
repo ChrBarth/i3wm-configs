@@ -89,5 +89,5 @@ TEXT
      "separator_block_width" : 5},
    { "full_text" : "%" },
    { "full_text" : "Updates: ${execpi 1800 update-check}" },
-   { "full_text" : "${time %d.%m.%Y %H:%M}", "color" : "\#ffffff"
+   { "full_text" : "${time %d.%m.%Y %H:%M}", "color" : "\#5493c2"
        }],

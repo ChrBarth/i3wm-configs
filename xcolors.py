@@ -9,13 +9,6 @@ import os
 import sys
 import string
 
-# for conky we need an extra \ before the hex-codes ("\#ffffff")
-# any argument passed will be put before the actual hex-code
-# since this is a special character it has to be escaped ( \\ )!
-additional = ''
-if len(sys.argv)>1:
-    additional = sys.argv[1]
-
 HOME = os.getenv('HOME')
 xresources = "{}/.Xresources".format(HOME)
 
@@ -50,5 +43,5 @@ with open(xresources) as xr:
 for line in sys.stdin:
     result = re.match('.*(_COLOR[0-9]{1,2}_).*', line)
     if result:
-        line = line.replace(result.group(1), "{}{}".format(additional, colors[result.group(1)]))
+        line = line.replace(result.group(1), colors[result.group(1)])
     print(line, end="")
