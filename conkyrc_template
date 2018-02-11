@@ -65,7 +65,7 @@ TEXT
        ${if_match ${memperc}<50}"\_COLOR2_"${else}
        ${if_match ${memperc}<75}"\_COLOR3_"${else}
        ${if_match ${memperc}<95}"\_COLOR1_"${else}
-       "\#ff0000"${endif}${endif}${endif},
+       "\_COLOR1_"${endif}${endif}${endif},
        "separator" : false,
        "separator_block_width" : 5},
    { "full_text" : "free" },

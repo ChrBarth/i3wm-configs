@@ -65,7 +65,7 @@ TEXT
        ${if_match ${memperc}<50}"\#207f3a"${else}
        ${if_match ${memperc}<75}"\#c6cd75"${else}
        ${if_match ${memperc}<95}"\#8e2d2d"${else}
-       "\#ff0000"${endif}${endif}${endif},
+       "\#8e2d2d"${endif}${endif}${endif},
        "separator" : false,
        "separator_block_width" : 5},
    { "full_text" : "free" },
