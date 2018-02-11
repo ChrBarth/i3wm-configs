@@ -42,14 +42,14 @@ TEXT
      "separator" : false } ,
 #   { "full_text" : "${execbar get_volume.sh}" , 
    { "full_text" : "${exec volume_bar.py}" ,
-     "color" : "\#476e77" } ,
+     "color" : "_COLOR6_" } ,
    { "full_text" : "",
        "separator" : false,
        "separator_block_width" : 5} ,
    { "full_text" : "${fs_free /}" , "color" :
-       ${if_match ${fs_free_perc /}<75}"\#207f3a"${else}
-       ${if_match ${fs_free_perc /}<85}"\#c6cd75"${else}
-       ${if_match ${fs_free_perc /}<95}"\#8e2d2d"${else}
+       ${if_match ${fs_free_perc /}<75}"_COLOR2_"${else}
+       ${if_match ${fs_free_perc /}<85}"_COLOR3_"${else}
+       ${if_match ${fs_free_perc /}<95}"_COLOR1_"${else}
        "\#ffffff" ${endif}${endif}${endif},
        "separator" : false,
        "separator_block_width" : 5},
@@ -62,26 +62,26 @@ TEXT
        "separator" : false,
        "separator_block_width" : 5},
        {"full_text" : "${memfree}/${memmax}" , "color" :
-       ${if_match ${memperc}<50}"\#207f3a"${else}
-       ${if_match ${memperc}<75}"\#c6cd75"${else}
-       ${if_match ${memperc}<95}"\#8e2d2d"${else}
+       ${if_match ${memperc}<50}"_COLOR2_"${else}
+       ${if_match ${memperc}<75}"_COLOR3_"${else}
+       ${if_match ${memperc}<95}"_COLOR1_"${else}
        "\#ff0000"${endif}${endif}${endif},
        "separator" : false,
        "separator_block_width" : 5},
    { "full_text" : "free" },
-   { "full_text" : " ${upspeed}", "color" : "\#c6cd75", "min_width" : 45,
+   { "full_text" : " ${upspeed}", "color" : "_COLOR3_", "min_width" : 45,
      "align" : "left",
      "separator" : false,
      "separator_block_width" : 5},
-   { "full_text" : " ${downspeed}", "color" : "\#207f3a", "min_width" : 45,
+   { "full_text" : " ${downspeed}", "color" : "_COLOR2_", "min_width" : 45,
      "align" : "left" },
    { "full_text" : "CPU:",
      "separator" : false,
      "separator_block_width" : 5},
    { "full_text" : "${cpu cpu0}", "color" :
-   	${if_match ${cpu cpu0}<25}"\#207f3a"${else}
-	${if_match ${cpu cpu0}<50}"\#c6cd75"${else}
-	${if_match ${cpu cpu0}<75}"\#8e2d2d"${else}
+   	${if_match ${cpu cpu0}<25}"_COLOR2_"${else}
+	${if_match ${cpu cpu0}<50}"_COLOR3_"${else}
+	${if_match ${cpu cpu0}<75}"_COLOR1_"${else}
 	"\#ff0000"${endif}${endif}${endif},
 	"min_width" : 12,
 	"align" : "right",
