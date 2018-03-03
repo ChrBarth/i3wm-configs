@@ -38,15 +38,15 @@ TEXT
 
  [
    $if_mpd_playing { "full_text" :
-        ${if_match "${mpd_status}"=="Playing"}"" ${else}
-        ${if_match "${mpd_status}"=="Paused"}"" ${endif} ${endif},
-        "color" : "\_COLOR14_",
-        "separator" : false } , $endif
+       ${if_match "${mpd_status}"=="Playing"}"" ${else}
+       ${if_match "${mpd_status}"=="Paused"}"" ${else}
+       "-" $endif $endif ,
+       "color" : "\_COLOR14_" ,
+       "separator" : false } , $endif
    $if_mpd_playing { "full_text" : "${mpd_artist}-${mpd_title}", "color" : "\_COLOR7_" }, $endif
    { "full_text" : "" ,
      "color" : "\_COLOR7_",
      "separator" : false } ,
-#   { "full_text" : "${execbar get_volume.sh}" , 
    { "full_text" : "${exec volume_bar.py}" ,
      "color" : "\_COLOR6_" } ,
    { "full_text" : "",
@@ -89,13 +89,13 @@ TEXT
      "color"     : "\_COLOR7_",
      "separator_block_width" : 5},
    { "full_text" : "${cpu cpu0}", "color" :
-   	${if_match ${cpu cpu0}<25}"\_COLOR2_"${else}
-	${if_match ${cpu cpu0}<50}"\_COLOR3_"${else}
-	${if_match ${cpu cpu0}<75}"\_COLOR1_"${else}
-	"\_COLOR1_"${endif}${endif}${endif},
-	"min_width" : 12,
-	"align" : "right",
-	"separator" : false,
+    ${if_match ${cpu cpu0}<25}"\_COLOR2_"${else}
+    ${if_match ${cpu cpu0}<50}"\_COLOR3_"${else}
+    ${if_match ${cpu cpu0}<75}"\_COLOR1_"${else}
+    "\_COLOR1_"${endif}${endif}${endif},
+    "min_width" : 12,
+    "align" : "right",
+    "separator" : false,
      "separator_block_width" : 5},
    { "full_text" : "%", "color" : "\_COLOR7_" },
    { "full_text" : "Updates: ${execpi 1800 update-check}", "color" : "\_COLOR7_" },
