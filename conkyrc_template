@@ -37,6 +37,11 @@ TEXT
 # JSON for i3bar
 
  [
+   $if_mpd_playing { "full_text" :
+        ${if_match "${mpd_status}"=="Playing"}"" ${else}
+        ${if_match "${mpd_status}"=="Paused"}"" ${endif} ${endif},
+        "color" : "\_COLOR14_",
+        "separator" : false } , $endif
    $if_mpd_playing { "full_text" : "${mpd_artist}-${mpd_title}", "color" : "\_COLOR7_" }, $endif
    { "full_text" : "" ,
      "color" : "\_COLOR7_",
