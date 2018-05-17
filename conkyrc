@@ -43,7 +43,7 @@ TEXT
        "-" $endif $endif ,
        "color" : "\#5493c2" ,
        "separator" : false } , $endif
-   $if_mpd_playing { "full_text" : "${execpi 10 mpdinfo.sh}", "color" : "\#a9a9a9" }, $endif
+   $if_mpd_playing { "full_text" : "${execpi 5 mpdinfo.sh}", "color" : "\#a9a9a9" }, $endif
    { "full_text" : "" ,
      "color" : "\#a9a9a9",
      "separator" : false } ,
