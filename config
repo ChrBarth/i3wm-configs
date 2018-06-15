@@ -48,6 +48,8 @@ bindsym Control+Mod1+t exec gtick
 bindsym Control+Mod1+o exec $term -e ncmpcpp
 bindsym Control+Mod1+u exec $term -e tmux
 bindsym Control+Mod1+p exec --no-startup-id urxvt -fn "xft:Terminus:pixelsize=24" -name pyterm -e python3
+# simple timer script:
+bindsym Control+Mod1+i exec --no-startup-id urxvt -fn "xft:Terminus:pixelsize=60" -name flurxvt -geometry 13x3 -e python3 ~/src/python/timer/timer.py
 # help (for now:)
 bindsym $mod+F1 exec urxvt -title helpterm -e sh -c "i3-keybinds.py | less"
 bindsym $mod+F2 exec urxvt -title helpterm -e sh -c "cat .config/ranger/rc.conf | sed -ne 's/.*map[\t ]*//g p' | less"
@@ -192,6 +194,9 @@ assign [class="^meterbridge$"] → $WS7
 assign [class="^Qtractor$"] → $WS8
 assign [class="^Pavucontrol"] → $WS7
 assign [class="^Claudia"] → $WS9
+assign [class="^Carla"] → $WS8
+assign [class="^Festige.py"] → $WS8
+assign [class="^Fst"] → $WS8
 ###}}}
 
 ### Special window/application settings:{{{
@@ -214,6 +219,7 @@ for_window [title="helpterm"] move position center
 for_window [title="^DrumGizmo*"] floating enable
 for_window [class="Xfce4-appfinder"] floating enable
 for_window [class="Timer"] floating enable
+for_window [class="Fst"] floating enable
 ###}}}
 
 ### workspace stuff:{{{
