@@ -1,12 +1,18 @@
 #!/bin/bash
 # creates blurred screenshot of current desktop and uses it as image for i3lock
 # new: use ffmpeg for blurring (much faster than convert!)
+# new: use ffmpeg also for overlaying lock_circle.png over lockscreen.png:
+#  [0] boxblur=5:5 [blur] --> takes input [0] (lockscreen.png) and blurs it, sends the blurred image to the output named "[blur]"
+#  [blur][1] overlay=(W-w)/2:(H-h)/2 --> takes what comes out of the "[blur]"-output (=the blurred screenshot) and puts
+#   [1] (=lock_circle.png) on top of it
+#  (W-w)/2 = (Width of lockscreen.png - Width of lock_circle.png) / 2 (=> X-Offset)
+#  (H-h)/2 = Same with height, so the lock-image is centered
+# see: https://stackoverflow.com/a/10920872
 
 # make screenshot of current desktop, put the lock image on top and invoke i3lock
 
 import -window root ~/lockscreen.png && \
-ffmpeg -y -v 0 -hide_banner -i ~/lockscreen.png -filter:v boxblur=5:5 ~/lockscreen.png && \
-composite .config/i3/lock_circle.png -geometry +690+270 ~/lockscreen.png ~/lockscreen.png && \
+ffmpeg -y -v 0 -hide_banner -i ~/lockscreen.png -i ~/.config/i3/lock_circle.png -filter_complex "[0] boxblur=5:5 [blur]; [blur][1] overlay=(W-w)/2:(H-h)/2" ~/lockscreen.png && \
 i3lock -i ~/lockscreen.png && \
 rm ~/lockscreen.png
 
