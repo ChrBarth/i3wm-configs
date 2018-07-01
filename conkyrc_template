@@ -54,9 +54,9 @@ TEXT
        "color" : "\_COLOR7_",
        "separator_block_width" : 5} ,
    { "full_text" : "${fs_free /}" , "color" :
-       ${if_match ${fs_free_perc /}<75}"\_COLOR2_"${else}
-       ${if_match ${fs_free_perc /}<85}"\_COLOR3_"${else}
-       ${if_match ${fs_free_perc /}<95}"\_COLOR1_"${else}
+       ${if_match ${fs_free_perc /}>50}"\_COLOR2_"${else}
+       ${if_match ${fs_free_perc /}>25}"\_COLOR3_"${else}
+       ${if_match ${fs_free_perc /}<10}"\_COLOR1_"${else}
        "\_COLOR15_" ${endif}${endif}${endif},
        "separator" : false,
        "separator_block_width" : 5},
