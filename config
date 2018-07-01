@@ -191,7 +191,7 @@ assign [class="^Cadence.py$"] → $WS7
 assign [class="^qsynth$"] → $WS7
 assign [title="^DrumGizmo*"] → $WS7
 assign [class="^meterbridge$"] → $WS7
-assign [class="^Qtractor$"] → $WS8
+assign [class="^qtractor$"] → $WS8
 assign [class="^Pavucontrol"] → $WS7
 assign [class="^Claudia"] → $WS9
 assign [class="^Carla"] → $WS8
@@ -206,7 +206,8 @@ for_window [class="^Mudita24$"] floating enable
 for_window [class="^Pavucontrol"] floating enable
 for_window [class="^Gtick$"] floating enable
 for_window [class="qsynth"] floating enable
-for_window [class="^Cadence.py$"] floating enable
+for_window [class="^Cadence$"] floating enable
+for_window [class="guitarix"] floating enable
 for_window [class="Audacious"] floating enable
 for_window [class="^Conky$"] floating enable
 for_window [class="^XCalc$"] floating enable
@@ -346,8 +347,7 @@ exec --no-startup-id mpd .mpdconf
 exec --no-startup-id mpdscribble --conf .mpdscribble/mpdscribble.conf
 
 # remove caps lock
-exec xmodmap -e "clear lock"
-#exec xmodmap -e "remove lock = Caps_Lock"
-# undo: xmodmap -e "add Lock = Caps_Lock"
-# bind CapsLock=>Esc (for vim)
-exec xmodmap -e "keysym Caps_Lock = Escape"
+exec --no-startup-id xmodmap ~/.xmodmaprc
+
+# load .Xresources:
+exec --no-startup-id xrdb ~/.Xresources
