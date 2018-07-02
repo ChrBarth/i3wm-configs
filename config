@@ -346,9 +346,9 @@ exec --no-startup-id numlockx
 exec --no-startup-id mpd .mpdconf
 exec --no-startup-id mpdscribble --conf .mpdscribble/mpdscribble.conf
 
+# load .Xresources:
+exec --no-startup-id xrdb ~/.Xresources
+
 # remove caps lock
 #exec --no-startup-id xmodmap ~/.xmodmaprc
 exec --no-startup-id ~/bin/startup.sh
-
-# load .Xresources:
-exec --no-startup-id xrdb ~/.Xresources
