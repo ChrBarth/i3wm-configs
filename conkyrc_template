@@ -84,8 +84,8 @@ TEXT
        "color" : "\_COLOR7_",
        "separator_block_width" : 5},
        {"full_text" : "${memfree}/${memmax}" , "color" :
-       ${if_match ${memperc}>75}"\_COLOR2_"${else}
-       ${if_match ${memperc}>50}"\_COLOR3_"${else}
+       ${if_match ${memperc}<25}"\_COLOR2_"${else}
+       ${if_match ${memperc}<50}"\_COLOR3_"${else}
        "\_COLOR1_" ${endif}${endif},
        "separator" : false,
        "separator_block_width" : 5},
