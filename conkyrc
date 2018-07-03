@@ -56,8 +56,7 @@ TEXT
    { "full_text" : "${fs_free /}" , "color" :
        ${if_match ${fs_free_perc /}>50}"\#207f3a"${else}
        ${if_match ${fs_free_perc /}>25}"\#c6cd75"${else}
-       ${if_match ${fs_free_perc /}<10}"\#8e2d2d"${else}
-       "\#ffffff" ${endif}${endif}${endif},
+       "\#8e2d2d" ${endif}${endif},
        "separator" : false,
        "separator_block_width" : 5},
    { "full_text" : "free",
@@ -71,8 +70,7 @@ TEXT
    { "full_text" : "${fs_free /home}" , "color" :
        ${if_match ${fs_free_perc /home}>50}"\#207f3a"${else}
        ${if_match ${fs_free_perc /home}>25}"\#c6cd75"${else}
-       ${if_match ${fs_free_perc /home}<10}"\#8e2d2d"${else}
-       "\#ffffff" ${endif}${endif}${endif},
+       "\#8e2d2d" ${endif}${endif},
        "separator" : false,
        "separator_block_width" : 5},
    { "full_text" : "free",
@@ -86,10 +84,9 @@ TEXT
        "color" : "\#a9a9a9",
        "separator_block_width" : 5},
        {"full_text" : "${memfree}/${memmax}" , "color" :
-       ${if_match ${memperc}<50}"\#207f3a"${else}
-       ${if_match ${memperc}<75}"\#c6cd75"${else}
-       ${if_match ${memperc}<95}"\#8e2d2d"${else}
-       "\#8e2d2d"${endif}${endif}${endif},
+       ${if_match ${memperc}>75}"\#207f3a"${else}
+       ${if_match ${memperc}>50}"\#c6cd75"${else}
+       "\#8e2d2d" ${endif}${endif},
        "separator" : false,
        "separator_block_width" : 5},
    { "full_text" : "free", "color" : "\#a9a9a9" },
