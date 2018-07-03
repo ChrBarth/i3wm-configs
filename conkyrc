@@ -83,12 +83,15 @@ TEXT
        "separator" : false,
        "color" : "\#a9a9a9",
        "separator_block_width" : 5},
-       {"full_text" : "${memfree}/${memmax}" , "color" :
+       {"full_text" : "${memfree}" , "color" :
        ${if_match ${memperc}<25}"\#207f3a"${else}
        ${if_match ${memperc}<50}"\#c6cd75"${else}
        "\#8e2d2d" ${endif}${endif},
        "separator" : false,
        "separator_block_width" : 5},
+   { "full_text" : "/", "color" : "\#a9a9a9", "separator" : false },
+   { "full_text" : "${memmax}", "color" : "\#476e77",
+       "separator" : false },
    { "full_text" : "free", "color" : "\#a9a9a9" },
    { "full_text" : " ${upspeed}", "color" : "\#c6cd75", "min_width" : 55,
      "align" : "left",
