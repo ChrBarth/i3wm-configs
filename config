@@ -83,7 +83,8 @@ bindsym $mod+Shift+q kill
 bindsym Control+Mod1+l exec lock_screen
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+#bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec rofi -show-icons -modi run#drun#window -show drun -theme ~/.config/rofi/theme.rasi
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -177,10 +178,12 @@ assign [class="^Thunderbird"] → $WS3
 assign [class="^qutebrowser$"] → $WS3
 assign [class="^Gimp$"] → $WS4
 assign [class="^Inkscape$"] → $WS4
+assign [class="^Scribus$"] → $WS4
 assign [class="^Blender$"] → $WS4
 assign [class="^kdenlive$"] → $WS4
 assign [class="^Digikam$"] → $WS4
-assign [class="^libreoffice-*"] → $WS5
+assign [class="^libreoffice*"] → $WS5
+assign [title="(?i)libreoffice|LibreOffice"] → $WS5
 assign [class="^vlc$"] → $WS6
 assign [class="^Kaffeine$"] → $WS6
 assign [class="^Qjackctl$"] → $WS7
