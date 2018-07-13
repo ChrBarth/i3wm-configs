@@ -6,5 +6,5 @@
 # be sure that apt-daily.timer is enabled
 # (sudo systemctl enable apt-daily.timer)
 IFS=";" read updates security_updates < <(/usr/lib/update-notifier/apt-check 2>&1)
-
-echo $updates
+let all_updates=$updates+$security_updates
+echo $all_updates
