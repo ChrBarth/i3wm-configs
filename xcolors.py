@@ -44,7 +44,11 @@ if len(sys.argv)<2:
     for line in sys.stdin:
         result = re.match('.*(_COLOR[0-9]{1,2}_).*', line)
         if result:
-            line = line.replace(result.group(1), colors[result.group(1)])
+            try:
+                line = line.replace(result.group(1), colors[result.group(1)])
+            except KeyError:
+                # see comment below
+                pass
         print(line, end="")
 # dirty file-hack (sourcefile is argv[1], destination file is argv[2]):
 else:
@@ -60,7 +64,7 @@ else:
                             line = line.replace(result.group(1), colors[result.group(1)])
                         except KeyError:
                             pass
-                            # _COLORxx_ not in colors[] give key error,
+                            # _COLORxx_ not in colors[] gives key error,
                             # we just leave those as they are
 
                     o.write(line)
