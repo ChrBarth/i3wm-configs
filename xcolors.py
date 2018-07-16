@@ -40,8 +40,26 @@ with open(xresources) as xr:
             colors[key] = result.group(2)
 
 # now replace the placeholders with actual colors (stdin):
-for line in sys.stdin:
-    result = re.match('.*(_COLOR[0-9]{1,2}_).*', line)
-    if result:
-        line = line.replace(result.group(1), colors[result.group(1)])
-    print(line, end="")
+if len(sys.argv)<2:
+    for line in sys.stdin:
+        result = re.match('.*(_COLOR[0-9]{1,2}_).*', line)
+        if result:
+            line = line.replace(result.group(1), colors[result.group(1)])
+        print(line, end="")
+# dirty file-hack (sourcefile is argv[1], destination file is argv[2]):
+else:
+    infile  = sys.argv[1]
+    outfile = sys.argv[2]
+    if os.path.isfile(infile):
+        with open(infile, 'r') as i:
+            with open(outfile, 'w') as o:
+                for line in i.readlines():
+                    result = re.match('.*(_COLOR[0-9]{1,2}_).*', line)
+                    if result:
+                        try:
+                            line = line.replace(result.group(1), colors[result.group(1)])
+                        except KeyError:
+                            pass
+                            # _COLOR16_ give key error, we just leave those
+
+                    o.write(line)
