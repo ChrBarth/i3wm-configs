@@ -114,5 +114,6 @@ TEXT
      "separator_block_width" : 5},
    { "full_text" : "%", "color" : "\_COLOR7_" },
    { "full_text" : "Updates: ${execpi 1800 update-check}", "color" : "\_COLOR7_" },
+#  { "full_text" : "${execpi 5 phone-check}", "color" : "\_COLOR5_" },
    { "full_text" : "${time %d.%m.%Y %H:%M}", "color" : "\_COLOR14_"
        }],
