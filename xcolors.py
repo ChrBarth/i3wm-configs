@@ -60,6 +60,7 @@ else:
                             line = line.replace(result.group(1), colors[result.group(1)])
                         except KeyError:
                             pass
-                            # _COLOR16_ give key error, we just leave those
+                            # _COLORxx_ not in colors[] give key error,
+                            # we just leave those as they are
 
                     o.write(line)
