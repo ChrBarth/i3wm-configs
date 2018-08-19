@@ -5,6 +5,11 @@
 # https://askubuntu.com/a/457887
 # be sure that apt-daily.timer is enabled
 # (sudo systemctl enable apt-daily.timer)
-IFS=";" read updates security_updates < <(/usr/lib/update-notifier/apt-check 2>&1)
-let all_updates=$updates+$security_updates
+
+#IFS=";" read updates security_updates < <(/usr/lib/update-notifier/apt-check 2>&1)
+#let all_updates=$updates+$security_updates
+
+# the above method does not seem to work so well, 
+all_updates=$(apt list --upgradeable 2>/dev/null | grep aktualisierbar | wc -l)
+
 echo $all_updates
