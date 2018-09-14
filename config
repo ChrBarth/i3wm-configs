@@ -232,6 +232,7 @@ for_window [title="^DrumGizmo*"] floating enable
 for_window [class="Xfce4-appfinder"] floating enable
 for_window [class="Timer"] floating enable
 for_window [class="Fst"] floating enable
+for_window [class="feh"] floating enable
 ###}}}
 
 ### workspace stuff:{{{
