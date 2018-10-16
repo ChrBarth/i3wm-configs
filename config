@@ -63,13 +63,14 @@ bindsym Control+Mod1+a exec xfce4-appfinder
 
 # mpd control via mpc:
 # (Multimediakeys without Contol are already used by clementine)
-bindsym Control+XF86AudioPrev exec mpc prev
-bindsym Control+XF86AudioNext exec mpc next
-bindsym Control+XF86AudioPlay exec mpc toggle
+# don't use clementine atm so got rid of Control :)
+bindsym XF86AudioPrev exec mpc prev
+bindsym XF86AudioNext exec mpc next
+bindsym XF86AudioPlay exec mpc toggle
 # from https://askubuntu.com/a/444183:
-bindsym Control+XF86AudioMute exec amixer -q -D pulse sset Master toggle
-bindsym Control+XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%-
-bindsym Control+XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+
+bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle
+bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%-
+bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+
 
 # screenshot:
 bindsym Print exec "scrot ~/Bilder/screenshots/screenshot_%Y-%m-%d-%k%M%S.png"
