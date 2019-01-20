@@ -47,8 +47,9 @@ bindsym Control+Mod1+n exec pavucontrol
 bindsym Control+Mod1+e exec caja
 bindsym Control+Mod1+d exec cadence
 bindsym Control+Mod1+t exec gtick
-bindsym Control+Mod1+o exec $term -e ncmpcpp
-bindsym Control+Mod1+u exec $term -e tmux
+bindsym Control+Mod1+o exec st -e ncmpcpp
+# let's try out st for some time (at least with tmux):
+bindsym Control+Mod1+u exec st -e tmux
 bindsym Control+Mod1+p exec --no-startup-id urxvt -fn "xft:Terminus:pixelsize=24" -name pyterm -e python3
 # simple timer script:
 bindsym Control+Mod1+i exec --no-startup-id urxvt -fn "xft:Terminus:pixelsize=60" -name flurxvt -geometry 13x3 -e python3 ~/src/python/timer/timer.py
