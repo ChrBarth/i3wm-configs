@@ -59,6 +59,7 @@ bindsym $mod+F2 exec urxvt -title helpterm -e sh -c "cat .config/ranger/rc.conf 
 bindsym $mod+F3 exec urxvt -title helpterm -e sh -c "cat .bashrc | sed -ne 's/alias //g p' | less"
 bindsym $mod+F4 exec urxvt -name flurxvt
 bindsym $mod+F5 exec --no-startup-id ~/bin/studiolauncher.sh
+bindsym $mod+F6 exec --no-startup-id find ~/Dokumente/Notizen/ -type f -name *.md | rofi -dmenu | xargs urxvt -name flurxvt -e vim
 # sometimes I need some kind of menu...:
 bindsym Control+Mod1+a exec xfce4-appfinder 
 
@@ -236,6 +237,7 @@ for_window [class="Xfce4-appfinder"] floating enable
 for_window [class="Timer"] floating enable
 for_window [class="Fst"] floating enable
 for_window [class="feh"] floating enable
+for_window [class="Gzdoom"] floating enable
 ###}}}
 
 ### workspace stuff:{{{
