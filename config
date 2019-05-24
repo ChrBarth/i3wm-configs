@@ -61,6 +61,8 @@ bindsym $mod+F4 exec urxvt -name flurxvt
 bindsym $mod+F5 exec --no-startup-id ~/bin/studiolauncher.sh
 bindsym $mod+F6 exec --no-startup-id find ~/Dokumente/Notizen/ -type f -name *.md | rofi -dmenu | xargs -r urxvt -name flurxvt -e vim
 bindsym $mod+F7 exec --no-startup-id find ~/src/git/cheatsheets/pdf/ -type f | rofi -dmenu | xargs -r evince
+bindsym $mod+F8 exec --no-startup-id find ~/Dokumente/Notizen/html -type f -name *.html | rofi -dmenu | xargs -r qutebrowser --target auto
+bindsym $mod+F9 exec --no-startup-id find ~/src/git/cheatsheets/html/ -type f | rofi -dmenu | xargs -r qutebrowser --target auto
 # sometimes I need some kind of menu...:
 bindsym Control+Mod1+a exec xfce4-appfinder 
 
