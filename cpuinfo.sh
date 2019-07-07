@@ -17,4 +17,4 @@ done
 
 echo
 
-sensors -u | awk '/Package id/ || /Core/ { printf("%s ",$0); getline; printf("%d\n",$2) }'
+sensors -u | awk '/Package id/ || /Core/ { printf("%s ",$0); getline; printf("%d°C\n",$2) }'
