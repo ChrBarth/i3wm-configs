@@ -213,6 +213,7 @@ assign [title="^DrumGizmo*"] → $WS7
 assign [class="^meterbridge$"] → $WS7
 assign [class="^qtractor$"] → $WS8
 assign [class="^Pavucontrol"] → $WS7
+assign [class="^Catia"] → $WS7
 assign [class="^Claudia"] → $WS9
 assign [class="^Carla"] → $WS8
 assign [class="^Festige.py"] → $WS8
