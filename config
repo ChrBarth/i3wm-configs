@@ -223,6 +223,7 @@ assign [class="^Fst"] → $WS8
 ### Special window/application settings:{{{
 # special application settings (floating etc):
 for_window [class="^Qjackctl$"] floating enable
+for_window [class="Guitarix"] floating enable
 for_window [class="^Mudita24$"] floating enable
 for_window [class="^Pavucontrol"] floating enable
 for_window [class="^Gtick$"] floating enable
