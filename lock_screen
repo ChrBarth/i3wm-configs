@@ -11,8 +11,14 @@
 
 # make screenshot of current desktop, put the lock image on top and invoke i3lock
 
+revert () {
+    xset -dpms
+    }
+trap revert HUP INT TERM
 import -window root ~/lockscreen.png && \
 ffmpeg -y -v 0 -hide_banner -i ~/lockscreen.png -i ~/.config/i3/lock_circle.png -filter_complex "[0] boxblur=5:5 [blur]; [blur][1] overlay=(W-w)/2:(H-h)/2" ~/lockscreen.png && \
-i3lock -i ~/lockscreen.png && \
+# set screen blanking time a little lower since we're ovbiously not using it:
+xset +dpms dpms 120 600 600
+i3lock -n -i ~/lockscreen.png
 rm ~/lockscreen.png
-
+revert

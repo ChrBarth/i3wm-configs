@@ -46,31 +46,35 @@ bindsym Control+Mod1+m exec mudita24
 bindsym Control+Mod1+n exec pavucontrol
 bindsym Control+Mod1+e exec caja
 bindsym Control+Mod1+d exec cadence
-bindsym Control+Mod1+t exec gtick
+bindsym Control+Mod1+t exec gtklick
 bindsym Control+Mod1+o exec st -e ncmpcpp
 bindsym Control+Mod1+r exec urxvt -name flurxvt -e ranger
 # let's try out st for some time (at least with tmux):
 bindsym Control+Mod1+u exec st -e tmux
 bindsym Control+Mod1+p exec --no-startup-id urxvt -fn "xft:Terminus:pixelsize=24" -name pyterm -e python3
 # simple timer script:
-bindsym Control+Mod1+i exec --no-startup-id urxvt -fn "xft:Terminus:pixelsize=60" -name flurxvt -geometry 13x3 -e python3 ~/src/python/timer/timer.py
+bindsym Control+Mod1+i exec --no-startup-id urxvt -fn "xft:Terminus:pixelsize=60" -name timer -geometry 13x3 -e python3 ~/src/python/timer/timer.py
 # help (for now:)
 bindsym $mod+F1 exec urxvt -title helpterm -e sh -c "i3-keybinds.py | less"
 bindsym $mod+F2 exec urxvt -title helpterm -e sh -c "cat .config/ranger/rc.conf | sed -ne 's/.*map[\t ]*//g p' | less"
 bindsym $mod+F3 exec urxvt -title helpterm -e sh -c "cat .bashrc | sed -ne 's/alias //g p' | less"
 bindsym $mod+F4 exec urxvt -name flurxvt
 bindsym $mod+F5 exec --no-startup-id ~/bin/studiolauncher.sh
-bindsym $mod+F6 exec --no-startup-id find ~/Dokumente/Notizen/ -type f -name *.md | rofi -dmenu | xargs -r urxvt -name flurxvt -e vim
-bindsym $mod+F7 exec --no-startup-id find ~/src/git/cheatsheets/pdf/ -type f | rofi -dmenu | xargs -r evince
-bindsym $mod+F8 exec --no-startup-id find ~/Dokumente/Notizen/html -type f -name *.html | rofi -dmenu | xargs -r qutebrowser --target auto
-bindsym $mod+F9 exec --no-startup-id find ~/src/git/cheatsheets/html/ -type f | rofi -dmenu | xargs -r qutebrowser --target auto
+#bindsym $mod+F6 exec --no-startup-id ~/bin/monitor_inputs.sh on >/dev/null
+bindsym $mod+F6 exec --no-startup-id ~/bin/practicemode.sh on >/dev/null; workspace $WS7
+#bindsym $mod+F7 exec --no-startup-id ~/bin/monitor_inputs.sh off >/dev/null
+bindsym $mod+F7 exec --no-startup-id ~/bin/practicemode.sh off >/dev/null
+bindsym $mod+F8 exec --no-startup-id find ~/Dokumente/Notizen/ -type f -name *.md | rofi -dmenu | xargs -r urxvt -name flurxvt -e vim
+bindsym $mod+F9 exec --no-startup-id find ~/src/git/cheatsheets/pdf/ -type f | rofi -dmenu | xargs -r evince
+#bindsym $mod+F8 exec --no-startup-id find ~/Dokumente/Notizen/html -type f -name *.html | rofi -dmenu | xargs -r qutebrowser --target auto
+#bindsym $mod+F9 exec --no-startup-id find ~/src/git/cheatsheets/html/ -type f | rofi -dmenu | xargs -r qutebrowser --target auto
 # sysinfo stuff:
 bindsym Control+Mod1+1 exec urxvt -name flurxvt -geometry 60x10 -title cpuinfo -e watch cpuinfo.sh
 # sometimes I need some kind of menu...:
 bindsym Control+Mod1+a exec xfce4-appfinder 
 
 # mpd control via mpc:
-# (Multimediakeys without Contol are already used by clementine)
+# (Multimediakeys without Control are already used by clementine)
 # don't use clementine atm so got rid of Control :)
 bindsym XF86AudioPrev exec mpc prev
 bindsym XF86AudioNext exec mpc next
@@ -203,6 +207,7 @@ assign [class="^Qjackctl$"] → $WS7
 assign [class="^Gxtuner$"] → $WS7
 assign [class="^Mudita24$"] → $WS7
 assign [class="^Gtick$"] → $WS7
+assign [class="^Gtklick$"] → $WS7
 assign [class="^Hydrogen$"] → $WS8
 assign [class="^Ardour*"] → $WS8
 assign [class="^Audacity$"] → $WS8
@@ -242,10 +247,13 @@ for_window [title="helpterm"] floating enable
 for_window [title="helpterm"] move position center
 for_window [title="^DrumGizmo*"] floating enable
 for_window [class="Xfce4-appfinder"] floating enable
-for_window [class="Timer"] floating enable
+for_window [instance="timer"] floating enable
 for_window [class="Fst"] floating enable
 for_window [class="feh"] floating enable
 for_window [class="Gzdoom"] floating enable
+for_window [class="meterbridge"] move position 20 40
+for_window [class="Gtklick"] move position 20 300
+for_window [instance="timer"] move position 20 740
 ###}}}
 
 ### workspace stuff:{{{
@@ -358,6 +366,10 @@ exec --no-startup-id udiskie -ANs
 # redshift:
 # my eyes don't hurt anymore when I'm browsing the web late at night :D
 exec --no-startup-id redshift
+
+# screensaver/power options:
+# dpms: standby after 30 min, off after 1h, screensaver off
+exec --no-startup-id xset +dpms dpms 1800 3600 3600 s off
 
 # turn on Num Lock key:
 # (sudo apt install numlockx)
