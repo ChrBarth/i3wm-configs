@@ -79,6 +79,12 @@ bindsym Control+Mod1+a exec xfce4-appfinder
 bindsym XF86AudioPrev exec mpc prev
 bindsym XF86AudioNext exec mpc next
 bindsym XF86AudioPlay exec mpc toggle
+# spotify controls:
+# https://gist.github.com/wandernauta/6800547
+bindsym Control+XF86AudioPlay exec sp.sh play
+bindsym Control+Mod1+XF86AudioPlay exec notify-send "$(sp.sh current)"
+bindsym Control+XF86AudioNext exec sp.sh next
+bindsym Control+XF86AudioPrev exec sp.sh prev
 # from https://askubuntu.com/a/444183:
 bindcode 179 exec --no-startup-id amixer -q -D pulse sset Master toggle
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q -D pulse sset Master 5%-
