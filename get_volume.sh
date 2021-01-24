@@ -9,7 +9,7 @@
 #then
 #    LEFT=0
 #fi
+#echo "${LEFT}"
 
 # all of the above in one simple awk-script:
-LEFT=$(amixer -D pulse | awk '/Front Left: Playback/ {vol=$5; gsub("[\\[\\]\%]", "", vol); if ($6=="[on]") print vol; else print "0"}' 2>/dev/null)
-echo "${LEFT}"
+amixer -D pulse | awk '/Front Left: Playback/ {vol=$5; gsub("[\\[\\]\%]", "", vol); if ($6=="[on]") print vol; else print "0"}' 2>/dev/null
