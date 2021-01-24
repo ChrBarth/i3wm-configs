@@ -86,9 +86,9 @@ bindsym Control+Mod1+XF86AudioPlay exec notify-send "$(sp.sh current)"
 bindsym Control+XF86AudioNext exec sp.sh next
 bindsym Control+XF86AudioPrev exec sp.sh prev
 # from https://askubuntu.com/a/444183:
-bindcode 179 exec --no-startup-id amixer -q -D pulse sset Master toggle
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q -D pulse sset Master 5%-
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -D pulse sset Master 5%+
+bindcode 179 exec --no-startup-id amixer -q -D pulse sset Master toggle && pkill -SIGRTMIN+1 -F /tmp/i3blocks.pid
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q -D pulse sset Master 5%- && pkill -SIGRTMIN+1 -F /tmp/i3blocks.pid
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -D pulse sset Master 5%+ && pkill -SIGRTMIN+1 -F /tmp/i3blocks.pid
 
 # screenshot:
 bindsym Print exec "scrot ~/Bilder/screenshots/screenshot_%Y-%m-%d-%k%M%S.png"
@@ -344,7 +344,8 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 # at the moment I'm playing around with both i3status and conky:
 bar {
-status_command $HOME/bin/conky-i3bar
+#status_command $HOME/bin/conky-i3bar
+status_command "i3blocks & pid=$!; echo $pid > /tmp/i3blocks.pid; wait $pid"
 #       status_command i3status
 #       tray_output primary
 position top

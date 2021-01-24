@@ -5,8 +5,8 @@
 from subprocess import check_output
 
 # here we define the look of the bar:
-fillchar  = "▮"
-emptychar = "▫"
+fillchar  = "█"
+emptychar = "░"
 barlength = 15
 
 # we use a script that only outputs the value (e.g. "80" for 80% volume)
@@ -19,5 +19,12 @@ volume = int(text)
 numfills = int(volume/100*barlength)
 numempty = barlength-numfills
 
+if volume<=1:
+    icon="🔇"
+elif volume <=50:
+    icon="🔉"
+else:
+    icon="🔊"
+
 # print out the bar:
-print("{}{}".format(fillchar*numfills, emptychar*numempty))
+print("{} {}{}".format(icon, fillchar*numfills, emptychar*numempty))
