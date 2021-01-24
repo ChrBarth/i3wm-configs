@@ -44,9 +44,6 @@ TEXT
        "color" : "\_COLOR14_" ,
        "separator" : false } , $endif
    $if_mpd_playing { "full_text" : "${execpi 5 mpdinfo.sh}", "color" : "\_COLOR7_" }, $endif
-   { "full_text" : "" ,
-     "color" : "\_COLOR7_",
-     "separator" : false } ,
    { "full_text" : "${exec volume_bar.py}" ,
      "color" : "\_COLOR6_" } ,
    { "full_text" : "",
