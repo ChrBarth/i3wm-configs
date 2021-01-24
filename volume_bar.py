@@ -7,7 +7,7 @@ from subprocess import check_output
 # here we define the look of the bar:
 fillchar  = "█"
 emptychar = "░"
-barlength = 15
+barlength = 10
 
 # we use a script that only outputs the value (e.g. "80" for 80% volume)
 command   = ["get_volume.sh"]
