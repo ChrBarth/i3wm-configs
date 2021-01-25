@@ -66,8 +66,11 @@ bindsym $mod+F8 exec --no-startup-id find ~/Dokumente/Notizen/ -type f -name *.m
 bindsym $mod+F9 exec --no-startup-id find ~/src/git/cheatsheets/pdf/ -type f | rofi -dmenu | xargs -r evince
 bindsym $mod+F10 exec --no-startup-id ~/bin/monitor_inputs.sh on >/dev/null
 bindsym $mod+F11 exec --no-startup-id ~/bin/monitor_inputs.sh off >/dev/null
-bindsym Control+Mod1+6 exec --no-startup-id ~/bin/monitor_inputs.sh on >/dev/null; exec notify-send "Inputs active 🎚️"
-bindsym Control+Mod1+7 exec --no-startup-id ~/bin/monitor_inputs.sh off >/dev/null; exec notify-send "Inputs disconnected"
+#bindsym Control+Mod1+6 exec --no-startup-id ~/bin/monitor_inputs.sh on >/dev/null; exec notify-send "Inputs active 🎚️"
+#bindsym Control+Mod1+7 exec --no-startup-id ~/bin/monitor_inputs.sh off >/dev/null; exec notify-send "Inputs disconnected"
+# pkill for updating i3blocks
+bindsym Control+Mod1+6 exec --no-startup-id ~/bin/monitor_inputs.sh on && pkill -SIGRTMIN+2 -F /tmp/i3blocks.pid >/dev/null; exec notify-send "Inputs active 🎚️"
+bindsym Control+Mod1+7 exec --no-startup-id ~/bin/monitor_inputs.sh off && pkill -SIGRTMIN+2 -F /tmp/i3blocks.pid >/dev/null; exec notify-send "Inputs disconnected"
 # sysinfo stuff:
 bindsym Control+Mod1+1 exec urxvt -name flurxvt -geometry 60x10 -title cpuinfo -e watch cpuinfo.sh
 bindsym Control+Mod1+2 exec urxvt -name flurxvt -e ping 192.168.0.1

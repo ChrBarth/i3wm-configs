@@ -29,6 +29,16 @@ separator_block_width=15
 markup=none
 
 [block]
+command=$HOME/bin/i3blocks_jack.sh
+interval=15
+separator=false
+
+[block]
+command=$HOME/bin/i3blocks_connections.sh
+interval=once
+signal=2
+
+[block]
 command=$HOME/bin/mpdinfo.sh
 interval=5
 label=🎵
@@ -121,6 +131,10 @@ min_width=CPU: 100.00%
 ##label=⚡
 ##instance=1
 #interval=30
+[updates]
+label=Updates:
+command=$HOME/bin/update-check
+interval=1800
 
 # Date Time
 #
