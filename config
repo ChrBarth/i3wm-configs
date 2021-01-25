@@ -87,13 +87,13 @@ bindsym Control+XF86AudioNext exec sp.sh next
 bindsym Control+XF86AudioPrev exec sp.sh prev
 # from https://askubuntu.com/a/444183:
 # if we are using i3blocks, send signal to update volume display:
-#bindcode 179 exec --no-startup-id amixer -q -D pulse sset Master toggle && pkill -SIGRTMIN+1 -F /tmp/i3blocks.pid
-#bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q -D pulse sset Master 5%- && pkill -SIGRTMIN+1 -F /tmp/i3blocks.pid
-#bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -D pulse sset Master 5%+ && pkill -SIGRTMIN+1 -F /tmp/i3blocks.pid
+bindcode 179 exec --no-startup-id amixer -q -D pulse sset Master toggle && pkill -SIGRTMIN+1 -F /tmp/i3blocks.pid
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q -D pulse sset Master 5%- && pkill -SIGRTMIN+1 -F /tmp/i3blocks.pid
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -D pulse sset Master 5%+ && pkill -SIGRTMIN+1 -F /tmp/i3blocks.pid
 # i3bar/conky: no need to kill anything ;)
-bindcode 179 exec --no-startup-id amixer -q -D pulse sset Master toggle 
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q -D pulse sset Master 5%- 
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -D pulse sset Master 5%+
+#bindcode 179 exec --no-startup-id amixer -q -D pulse sset Master toggle 
+#bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q -D pulse sset Master 5%- 
+#bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -D pulse sset Master 5%+
 
 # screenshot:
 bindsym Print exec "scrot ~/Bilder/screenshots/screenshot_%Y-%m-%d-%k%M%S.png"
@@ -349,8 +349,11 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 # at the moment I'm playing around with both i3status and conky:
 bar {
-status_command $HOME/bin/conky-i3bar
+#status_command $HOME/bin/conky-i3bar
+# this crashes i3blocks when an application goes fullscreen:
 #status_command "i3blocks & pid=$!; echo $pid > /tmp/i3blocks.pid; wait $pid"
+# if we put all of the above line in a script, it works:
+status_command "$HOME/bin/start_i3blocks.sh"
 #       status_command i3status
 #       tray_output primary
 position top

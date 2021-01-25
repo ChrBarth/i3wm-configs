@@ -14,7 +14,7 @@ The following applications are used in addition to i3:
 
   * copy *config* into ~/.config/i3/
   * copy *conkyrc* into ~/.config/conky/
-  * copy *cpuinfo.sh*, *cputemp.py*, *lock_screen*, *conky-i3bar*, *get_volume.sh*, *volume_bar.py*, *update-check* and *mpdinfo.sh* in a directory that's included in $PATH (I use ~/bin/) and make them executable (cpuinfo, cputemp, conky-i3bar are not needed when using i3blocks)
+  * copy *cpuinfo.sh*, *cputemp.py*, *lock_screen*, *conky-i3bar*, *get_volume.sh*, *volume_bar.py*, *update-check*, *start_i3blocks.sh* and *mpdinfo.sh* in a directory that's included in $PATH (I use ~/bin/) and make them executable (cpuinfo, cputemp, conky-i3bar are not needed when using i3blocks, start_i3blocks.sh when using conky)
   * copy *lock_circle.png* into ~/.config/i3/
   * copy i3blocksconfig into ~/.config/i3blocks/config
 
