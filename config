@@ -54,6 +54,10 @@ bindsym Control+Mod1+u exec $term -e tmux
 bindsym Control+Mod1+p exec --no-startup-id urxvt -fn "xft:Terminus:pixelsize=24" -name pyterm -e python3
 # simple timer script:
 bindsym Control+Mod1+i exec --no-startup-id urxvt -fn "xft:Terminus:pixelsize=60" -name timer -geometry 13x3 -e python3 ~/src/python/timer/timer.py
+# shortcuts for pass wrapper script:
+bindsym Control+$mod+p exec pass_wrapper.sh
+bindsym Control+$mod+n exec pass_wrapper.sh new
+bindsym Control+$mod+e exec pass_wrapper.sh edit
 # help (for now:)
 bindsym $mod+F1 exec urxvt -title helpterm -e sh -c "i3-keybinds.py | less"
 bindsym $mod+F2 exec urxvt -title helpterm -e sh -c "cat .config/ranger/rc.conf | sed -ne 's/.*map[\t ]*//g p' | less"
@@ -262,6 +266,8 @@ for_window [instance="pyterm"] move position center
 for_window [instance="flurxvt"] floating enable
 for_window [title="helpterm"] floating enable
 for_window [title="helpterm"] move position center
+for_window [title="passwd"] floating enable
+for_window [title="passwd"] move position center
 for_window [title="^DrumGizmo*"] floating enable
 for_window [class="Xfce4-appfinder"] floating enable
 for_window [instance="timer"] floating enable
