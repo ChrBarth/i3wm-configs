@@ -135,6 +135,7 @@ min_width=CPU: 100.00%
 label=Updates:
 command=$HOME/bin/update-check
 interval=1800
+signal=3
 
 # Date Time
 #
