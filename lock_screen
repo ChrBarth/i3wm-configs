@@ -15,9 +15,14 @@ revert () {
     xset -dpms
     }
 trap revert HUP INT TERM
-import -window root ~/desktop.png && \
-ffmpeg -y -v 0 -hide_banner -i ~/desktop.png -i ~/.config/i3/lock_circle.png -filter_complex "[0] boxblur=5:5 [blur]; [blur][1] overlay=(W-w)/2:(H-h)/2" ~/lockscreen.png && \
-rm ~/desktop.png && \
+# ImageMagick version with just resizing (creates blocky image):
+import -window root -resize 20% - | convert - -scale 500% - | convert - ~/.config/i3/lock_circle.png -gravity center -composite ~/lockscreen.png
+
+# ffmpeg version with blurring:
+#import -window root ~/desktop.png && \
+#ffmpeg -y -v 0 -hide_banner -i ~/desktop.png -i ~/.config/i3/lock_circle.png -filter_complex "[0] boxblur=5:5 [blur]; [blur][1] overlay=(W-w)/2:(H-h)/2" ~/lockscreen.png && \
+#rm ~/desktop.png && \
+
 # set screen blanking time a little lower since we're ovbiously not using it:
 xset +dpms dpms 120 600 600
 i3lock -n -i ~/lockscreen.png
