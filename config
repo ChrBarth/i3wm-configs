@@ -65,6 +65,9 @@ bindsym $mod+F6 exec --no-startup-id ~/bin/practicemode.sh on >/dev/null; worksp
 bindsym $mod+F7 exec --no-startup-id ~/bin/practicemode.sh off >/dev/null
 bindsym $mod+F8 exec --no-startup-id find ~/Dokumente/Notizen/ -type f -name *.md | rofi -dmenu -p "Notiz" | xargs -r urxvt -name flurxvt -e vim
 bindsym $mod+F9 exec --no-startup-id find ~/src/git/cheatsheets/pdf/ -type f | rofi -dmenu -p "Cheatsheet"| xargs -r evince
+bindsym $mod+F10 exec --no-startup-id audacious; workspace $WS8
+bindsym $mod+F11 exec --no-startup-id audacity; workspace $WS8
+bindsym $mod+F12 exec --no-startup-id ardour; workspace $WS8
 #bindsym Control+Mod1+6 exec --no-startup-id ~/bin/monitor_inputs.sh on >/dev/null; exec notify-send "Inputs active 🎚️"
 #bindsym Control+Mod1+7 exec --no-startup-id ~/bin/monitor_inputs.sh off >/dev/null; exec notify-send "Inputs disconnected"
 # pkill for updating i3blocks
