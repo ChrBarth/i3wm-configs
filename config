@@ -8,7 +8,8 @@
 ### General settings:{{{
 set $mod Mod4
 #set $term urxvt
-set $term st
+#set $term st
+set $term sakura
 
 # path to the background image
 # to set a background image I use ranger and convert the selected
@@ -46,7 +47,9 @@ bindsym Control+Mod1+n exec pavucontrol; workspace $WS7
 bindsym Control+Mod1+e exec caja 2>/dev/null
 bindsym Control+Mod1+d exec cadence; workspace $WS7
 bindsym Control+Mod1+t exec gtklick; workspace $WS7
-bindsym control+Mod1+o exec i3-msg workspace $WS2; exec $term -e ncmpcpp
+bindsym Control+Mod1+o exec i3-msg workspace $WS2; exec $term -t ncmpcpp -e ncmpcpp
+bindsym Control+Mod1+k exec i3-msg workspace $WS4; exec krita
+bindsym Control+Mod1+g exec i3-msg workspace $WS4; exec digikam
 bindsym Control+Mod1+u exec $term -e tmux
 bindsym Control+Mod1+p exec --no-startup-id urxvt -fn "xft:Terminus:pixelsize=24" -name pyterm -e python3
 # simple timer script:
@@ -56,10 +59,11 @@ bindsym Control+$mod+p exec pass_wrapper.sh
 bindsym Control+$mod+n exec pass_wrapper.sh new
 bindsym Control+$mod+e exec pass_wrapper.sh edit
 # help (for now:)
-bindsym $mod+F1 exec urxvt -title helpterm -e sh -c "i3-keybinds.py | less"
+#bindsym $mod+F1 exec urxvt -title helpterm -e sh -c "i3-keybinds.py | less"
+bindsym $mod+F1 exec urxvt -title helpterm -e sh -c "awk -f ~/bin/i3-keybinds.awk .config/i3/config | less -S"
 bindsym $mod+F2 exec urxvt -title helpterm -e sh -c "cat .config/ranger/rc.conf | sed -ne 's/.*map[\t ]*//g p' | less"
 bindsym $mod+F3 exec urxvt -title helpterm -e sh -c "cat .bashrc | sed -ne 's/alias //g p' | less"
-bindsym $mod+F4 exec urxvt -name flurxvt
+bindsym $mod+F4 exec urxvt -name flurxvt -e /bin/bash
 #bindsym $mod+F5 exec --no-startup-id ~/bin/studiolauncher.sh
 bindsym $mod+F6 exec --no-startup-id ~/bin/practicemode.sh on >/dev/null; workspace $WS7
 bindsym $mod+F7 exec --no-startup-id ~/bin/practicemode.sh off >/dev/null
@@ -205,7 +209,7 @@ set $WS10 10.
 assign [class="^Clementine$"] → $WS2
 assign [class="^Spotify$"] → $WS2
 assign [class="^Chromium-browser$"] → $WS3
-assign [class="^Firefox$"] → $WS3
+assign [class="^firefox$"] → $WS3
 assign [class="^Thunderbird"] → $WS3
 assign [class="^qutebrowser$"] → $WS3
 assign [class="^Gimp.*$"] → $WS4
@@ -244,6 +248,7 @@ assign [class="^Gnome-sudoku$"] → $WS9
 assign [title="ncmpcpp"] → $WS2
 assign [class="Signal"] → $WS10
 assign [class="discord"] → $WS10
+assign [class="krita"] → $WS4
 ###}}}
 
 ### Special window/application settings:{{{
@@ -407,6 +412,8 @@ exec_always --no-startup-id xrdb ~/.Xresources
 # start policykit:
 # (https://askubuntu.com/questions/799125/authentication-agent-and-i3wm)
 exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+
+exec --no-startup-id nm-applet
 
 # start some more stuff:
 exec --no-startup-id ~/bin/autostart.sh

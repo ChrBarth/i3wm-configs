@@ -12,4 +12,12 @@
 # the above method does not seem to work so well, 
 all_updates=$(apt list --upgradeable 2>/dev/null | grep aktualisierbar | wc -l)
 
+COLOR="#404040"
+if [ $all_updates -gt 0 ]
+then
+    COLOR="#FF0000"
+fi
+
 echo $all_updates
+echo $all_updates
+echo "$COLOR"

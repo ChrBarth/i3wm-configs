@@ -28,9 +28,16 @@ command=/usr/share/i3blocks/$BLOCK_NAME
 separator_block_width=15
 markup=none
 
+#[block]
+#interval=once
+#command=echo 🎛️
+#separator_block_width=0
+#separator=false
+
 [block]
 command=$HOME/bin/i3blocks_jack.sh
 interval=15
+separator_block_width=0
 separator=false
 
 [block]
@@ -136,6 +143,11 @@ label=Updates:
 command=$HOME/bin/update-check
 interval=1800
 signal=3
+
+# Weather
+[weather]
+command=$HOME/bin/wetter
+interval=1800
 
 # Date Time
 #
