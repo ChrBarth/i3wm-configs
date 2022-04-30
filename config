@@ -52,6 +52,7 @@ bindsym Control+Mod1+k exec i3-msg workspace $WS4; exec krita
 bindsym Control+Mod1+g exec i3-msg workspace $WS4; exec digikam
 bindsym Control+Mod1+u exec $term -e tmux
 bindsym Control+Mod1+p exec --no-startup-id urxvt -fn "xft:Terminus:pixelsize=24" -name pyterm -e python3
+bindsym Control+Mod1+r exec --no-startup-id carla ~/Studio/Carla/GuitarPractice_Pulseaudio.carxp; workspace $WS8
 # simple timer script:
 bindsym Control+Mod1+i exec --no-startup-id urxvt -fn "xft:Terminus:pixelsize=60" -name timer -geometry 13x3 -e python3 ~/src/python/timer/timer.py
 # shortcuts for pass wrapper script:
