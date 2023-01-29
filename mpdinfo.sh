@@ -10,7 +10,7 @@ STATUS=$(mpc status | sed -n -E 's/\[(playing|paused)\].*/\1/p')
 if [ "$STATUS" = "paused" ];
 then
     PLAYING="⏸️"
-elif [ $STATUS = "playing" ];
+elif [ "$STATUS" = "playing" ];
 then
     PLAYING="▶️"
 fi

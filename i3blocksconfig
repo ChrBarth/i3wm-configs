@@ -34,16 +34,17 @@ markup=none
 #separator_block_width=0
 #separator=false
 
-[block]
-command=$HOME/bin/i3blocks_jack.sh
-interval=15
-separator_block_width=0
-separator=false
+# we do not need this anymore with pipewire I guess:
+#[block]
+#command=$HOME/bin/i3blocks_jack.sh
+#interval=15
+#separator_block_width=0
+#separator=false
 
-[block]
-command=$HOME/bin/i3blocks_connections.sh
-interval=once
-signal=2
+#[block]
+#command=$HOME/bin/i3blocks_connections.sh
+#interval=once
+#signal=2
 
 [block]
 command=$HOME/bin/mpdinfo.sh
@@ -88,10 +89,10 @@ interval=30
 # The directory defaults to $HOME if the instance is not specified.
 # The script may be called with a optional argument to set the alert
 # (defaults to 10 for 10%).
-[disk]
-label=🏠
-instance=/home/
-interval=30
+#[disk]
+#label=🏠
+#instance=/home/
+#interval=30
 
 [disk]
 label=🖥️

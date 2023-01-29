@@ -46,13 +46,16 @@ bindsym Control+Mod1+m exec mudita24 2>/dev/null; workspace $WS7
 bindsym Control+Mod1+n exec pavucontrol; workspace $WS7
 bindsym Control+Mod1+e exec caja 2>/dev/null
 bindsym Control+Mod1+d exec cadence; workspace $WS7
-bindsym Control+Mod1+t exec gtklick; workspace $WS7
-bindsym Control+Mod1+o exec i3-msg workspace $WS2; exec $term -t ncmpcpp -e ncmpcpp
+bindsym Control+Mod1+t exec urxvt -fn "xft:Inconsolata:pixelsize=40" -geometry 40x1 -title metronom -e sh -c "klick -P -i"; workspace $WS7
+bindsym Control+Mod1+o exec i3-msg workspace $WS2; exec kitty -T ncmpcpp -e ncmpcpp
 bindsym Control+Mod1+k exec i3-msg workspace $WS4; exec krita
 bindsym Control+Mod1+g exec i3-msg workspace $WS4; exec digikam
 bindsym Control+Mod1+u exec $term -e tmux
-bindsym Control+Mod1+p exec --no-startup-id urxvt -fn "xft:Terminus:pixelsize=24" -name pyterm -e python3
+bindsym Control+Mod1+p exec --no-startup-id urxvt -name pyterm -e python3
+#bindsym Control+Mod1+p exec --no-startup-id urxvt -fn "xft:Terminus:pixelsize=24" -name pyterm -e python3
 bindsym Control+Mod1+r exec --no-startup-id carla ~/Studio/Carla/GuitarPractice_Pulseaudio.carxp; workspace $WS8
+# random wallpaper:
+bindsym Control+Mod1+w exec --no-startup-id wallpyper.py -r
 # simple timer script:
 bindsym Control+Mod1+i exec --no-startup-id urxvt -fn "xft:Terminus:pixelsize=60" -name timer -geometry 13x3 -e python3 ~/src/python/timer/timer.py
 # shortcuts for pass wrapper script:
@@ -66,9 +69,9 @@ bindsym $mod+F2 exec urxvt -title helpterm -e sh -c "cat .config/ranger/rc.conf 
 bindsym $mod+F3 exec urxvt -title helpterm -e sh -c "cat .bashrc | sed -ne 's/alias //g p' | less"
 bindsym $mod+F4 exec urxvt -name flurxvt -e /bin/bash
 #bindsym $mod+F5 exec --no-startup-id ~/bin/studiolauncher.sh
-bindsym $mod+F6 exec --no-startup-id ~/bin/practicemode.sh on >/dev/null; workspace $WS7
-bindsym $mod+F7 exec --no-startup-id ~/bin/practicemode.sh off >/dev/null
-bindsym $mod+F8 exec --no-startup-id find ~/Dokumente/Notizen/ -type f -name *.md | rofi -dmenu -p "Notiz" | xargs -r urxvt -name flurxvt -e vim
+# in the rare case Caps Lock gets activated:
+bindsym $mod+F6 exec --no-startup-id xdotool key Caps_Lock
+bindsym $mod+F8 exec --no-startup-id find ~/Dokumente/Notizen/ -type f -name \*.md | rofi -dmenu -p "Notiz" | xargs -r urxvt -name flurxvt -e vim
 bindsym $mod+F9 exec --no-startup-id find ~/src/git/cheatsheets/pdf/ -type f | rofi -dmenu -p "Cheatsheet"| xargs -r evince
 bindsym $mod+F10 exec --no-startup-id audacious; workspace $WS8
 bindsym $mod+F11 exec --no-startup-id audacity; workspace $WS8
@@ -107,6 +110,8 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -D pulse sset Master
 
 # screenshot:
 bindsym Print exec "scrot ~/Bilder/screenshots/screenshot_%Y-%m-%d-%k%M%S.png"
+# take screenshot and open it in gimp:
+bindsym Control+Print exec "scrot ~/Bilder/screenshots/screenshot_temp.png && gimp ~/Bilder/screenshots/screenshot_temp.png"; workspace $WS4
 
 # kill focused window
 # (I actually like the three-button-version because it keeps me from
@@ -210,6 +215,7 @@ set $WS10 10.
 assign [class="^Clementine$"] → $WS2
 assign [class="^Spotify$"] → $WS2
 assign [class="^Chromium-browser$"] → $WS3
+assign [class="^Chromium$"] → $WS3
 assign [class="^firefox$"] → $WS3
 assign [class="^Thunderbird"] → $WS3
 assign [class="^qutebrowser$"] → $WS3
@@ -250,6 +256,8 @@ assign [title="ncmpcpp"] → $WS2
 assign [class="Signal"] → $WS10
 assign [class="discord"] → $WS10
 assign [class="krita"] → $WS4
+assign [title="metronom"] → $WS7
+assign [class="Gthumb"] → $WS4
 ###}}}
 
 ### Special window/application settings:{{{
@@ -262,7 +270,7 @@ for_window [class="^Gtick$"] floating enable
 for_window [class="qsynth"] floating enable
 for_window [class="^Cadence$"] floating enable
 for_window [class="guitarix"] floating enable
-for_window [class="Audacious"] floating enable
+# for_window [class="Audacious"] floating enable
 for_window [class="Gxtuner"] floating enable
 for_window [class="^Conky$"] floating enable
 for_window [class="^XCalc$"] floating enable
@@ -290,6 +298,7 @@ for_window [class="PdWindow"] floating enable
 for_window [class="PatchWindow"] floating enable
 for_window [class="Gpick"] floating enable
 for_window [class="Pypod_gui.py"] floating enable
+for_window [title="metronom"] floating enable
 ###}}}
 
 ### workspace stuff:{{{
@@ -403,10 +412,6 @@ exec --no-startup-id xset +dpms dpms 1800 3600 3600 s off
 # (sudo apt install numlockx)
 exec --no-startup-id numlockx
 
-# remove caps lock
-#exec --no-startup-id xmodmap ~/.xmodmaprc
-exec_always --no-startup-id setxkbmap de deadacute caps:escape
-
 # load .Xresources:
 exec_always --no-startup-id xrdb ~/.Xresources
 
@@ -418,6 +423,11 @@ exec --no-startup-id nm-applet
 
 # start some more stuff:
 exec --no-startup-id ~/bin/autostart.sh
+
+# remove caps lock
+# moved down to load it after ibus-stuff
+#exec --no-startup-id xmodmap ~/.xmodmaprc
+exec_always --no-startup-id setxkbmap de deadacute caps:escape
 
 # start one terminal with tmux inside:
 #exec urxvt -e tmux &

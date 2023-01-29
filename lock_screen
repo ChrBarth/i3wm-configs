@@ -24,7 +24,7 @@ import -window root -resize 20% - | convert - -scale 500% - | convert - ~/.confi
 #rm ~/desktop.png && \
 
 # set screen blanking time a little lower since we're ovbiously not using it:
-xset +dpms dpms 120 600 600
+xset +dpms dpms 120 300 3600
 i3lock -n -i ~/lockscreen.png
 rm ~/lockscreen.png
 revert
