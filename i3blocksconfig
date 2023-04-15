@@ -128,8 +128,6 @@ interval=10
 min_width=CPU: 100.00%
 #separator=false
 
-#[load_average]
-#interval=10
 
 # Battery indicator
 #
@@ -139,16 +137,22 @@ min_width=CPU: 100.00%
 ##label=⚡
 ##instance=1
 #interval=30
-[updates]
+[block]
 label=Updates:
 command=$HOME/bin/update-check
 interval=1800
 signal=3
 
 # Weather
-[weather]
-command=$HOME/bin/wetter
-interval=1800
+#[block]
+#command=$HOME/bin/wetter
+#interval=1800
+
+# calendar notifications:
+[block]
+label=🗓️
+command=$HOME/bin/i3blocks_cal.sh
+interval=once
 
 # Date Time
 #
