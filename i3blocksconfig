@@ -153,6 +153,7 @@ signal=3
 label=🗓️
 command=$HOME/bin/i3blocks_cal.sh
 interval=once
+signal=4
 
 # Date Time
 #
